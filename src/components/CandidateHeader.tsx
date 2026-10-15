@@ -14,7 +14,6 @@ export const CandidateHeader: React.FC = () => {
   const {
     candidate,
     timeRemaining,
-    mode,
     targetYear,
     toggleCalculator,
     togglePalette,
@@ -44,12 +43,13 @@ export const CandidateHeader: React.FC = () => {
   const isWarningTime = timeRemaining <= 900 && !isLowTime; // < 15 mins
 
   return (
-    <header className="bg-emerald-950 text-white shadow-md border-b-2 border-emerald-600 select-none shrink-0">
-      <div className="px-3 sm:px-4 lg:px-6 py-1.5 flex flex-wrap items-center justify-between gap-2">
-        {/* Left: Crest + Candidate Identity & Exam Info */}
-        <div className="flex items-center space-x-2.5 sm:space-x-3 min-w-0">
+    <header className="bg-emerald-950 text-white shadow-md border-b border-emerald-600 select-none shrink-0 z-30">
+      {/* Mobile Top Row & Desktop Unified Bar */}
+      <div className="px-3 sm:px-4 lg:px-6 py-1.5 flex flex-wrap items-center justify-between gap-1.5 sm:gap-2">
+        {/* Left: Crest + Candidate Identity */}
+        <div className="flex items-center space-x-2 sm:space-x-2.5 min-w-0">
           {/* JAMB crest emblem */}
-          <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center p-0.5 shadow shrink-0">
+          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white flex items-center justify-center p-0.5 shadow shrink-0">
             <svg viewBox="0 0 100 100" className="w-full h-full text-emerald-800 fill-current">
               <circle cx="50" cy="50" r="45" fill="#047857" />
               <circle cx="50" cy="50" r="38" fill="#ffffff" />
@@ -69,27 +69,21 @@ export const CandidateHeader: React.FC = () => {
 
           {/* Candidate details */}
           <div className="min-w-0 leading-tight">
-            <div className="flex items-center space-x-2 truncate">
-              <span className="font-black text-xs sm:text-sm tracking-wide text-amber-300 uppercase">
+            <div className="flex items-center space-x-1.5 sm:space-x-2 truncate">
+              <span className="font-black text-xs sm:text-sm tracking-wide text-amber-300 uppercase truncate">
                 {candidate.name}
               </span>
-              <span className="hidden md:inline text-[11px] text-slate-300">
-                Reg: <strong className="text-white font-mono">{candidate.regNumber}</strong>
-              </span>
-              <span className="hidden lg:inline text-[11px] text-slate-300">
+              <span className="text-[10px] sm:text-[11px] text-slate-300 truncate">
                 Seat: <strong className="text-white font-mono">{candidate.seatNumber}</strong>
               </span>
             </div>
-            <div className="text-[10px] sm:text-[11px] text-emerald-300 truncate flex items-center space-x-2">
-              <span className="font-semibold text-emerald-200">JAMB UTME CBT</span>
+            <div className="text-[10px] sm:text-[11px] text-emerald-300 truncate flex items-center space-x-1.5">
+              <span className="font-semibold text-emerald-200">UTME CBT</span>
               {targetYear && targetYear !== 'random' && (
                 <span className="bg-amber-400 text-slate-950 font-bold px-1 rounded text-[9px]">
-                  {targetYear} PAST QUESTIONS
+                  {targetYear}
                 </span>
               )}
-              <span className="hidden sm:inline text-emerald-400">
-                &bull; Mode: {mode === 'simulation' ? 'Official Simulation' : 'Study & Practice'}
-              </span>
               <span className="hidden xl:inline text-amber-300 font-medium">
                 &bull; Made with ❤️ by <strong>hxncodes</strong>
               </span>
@@ -98,52 +92,53 @@ export const CandidateHeader: React.FC = () => {
         </div>
 
         {/* Right: Quick Tools & Countdown Timer */}
-        <div className="flex items-center space-x-2 sm:space-x-3 shrink-0">
-          {/* Quick tool buttons */}
-          <div className="flex items-center space-x-1 sm:space-x-1.5">
+        <div className="flex items-center space-x-1.5 sm:space-x-2.5 shrink-0">
+          {/* Quick tool buttons (desktop inline, mobile icons) */}
+          <div className="flex items-center space-x-1">
             <button
               onClick={toggleCalculator}
-              className="flex items-center space-x-1 bg-emerald-900 hover:bg-emerald-800 text-emerald-100 hover:text-white px-2 sm:px-2.5 py-1 rounded text-xs font-semibold transition cursor-pointer border border-emerald-700 active:scale-95 shadow-xs"
-              title="Open On-Screen Calculator"
+              className="flex items-center space-x-1 bg-emerald-900 hover:bg-emerald-800 text-emerald-100 px-2 sm:px-2.5 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer border border-emerald-700 active:scale-95 shadow-xs min-h-[36px]"
+              title="Open Calculator"
             >
-              <Calculator className="w-3.5 h-3.5 text-amber-300" />
+              <Calculator className="w-3.5 h-3.5 text-amber-300 shrink-0" />
               <span className="hidden md:inline">Calculator</span>
             </button>
 
             <button
-              onClick={toggleKeyGuide}
-              className="flex items-center space-x-1 bg-emerald-900 hover:bg-emerald-800 text-emerald-100 hover:text-white px-2 sm:px-2.5 py-1 rounded text-xs font-semibold transition cursor-pointer border border-emerald-700 active:scale-95 shadow-xs"
-              title="8-Key Navigation Guide"
+              onClick={togglePalette}
+              className="lg:hidden flex items-center space-x-1 bg-emerald-900 hover:bg-emerald-800 text-emerald-100 px-2 sm:px-2.5 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer border border-emerald-700 shadow-xs min-h-[36px]"
+              title="Question Palette Matrix"
             >
-              <Keyboard className="w-3.5 h-3.5 text-amber-300" />
-              <span className="hidden md:inline">8-Key</span>
+              <Grid className="w-3.5 h-3.5 text-amber-300 shrink-0" />
+              <span className="text-[11px]">Grid</span>
             </button>
 
             <button
               onClick={toggleVirtualKeypad}
-              className={`flex items-center space-x-1 px-2 py-1 rounded text-xs font-semibold transition cursor-pointer border shadow-xs ${
+              className={`flex items-center space-x-1 px-2 sm:px-2.5 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer border shadow-xs min-h-[36px] ${
                 isVirtualKeypadOpen
                   ? 'bg-amber-400 text-slate-950 border-amber-300 font-bold'
                   : 'bg-emerald-900 hover:bg-emerald-800 text-emerald-100 border-emerald-700'
               }`}
               title="Toggle Virtual 8-Key Pad"
             >
-              <Smartphone className="w-3.5 h-3.5" />
+              <Smartphone className="w-3.5 h-3.5 shrink-0" />
               <span className="hidden sm:inline">Pad</span>
             </button>
 
             <button
-              onClick={togglePalette}
-              className="lg:hidden flex items-center space-x-1 bg-emerald-900 hover:bg-emerald-800 text-emerald-100 px-2 py-1 rounded text-xs font-semibold transition cursor-pointer border border-emerald-700 shadow-xs"
-              title="Question Palette"
+              onClick={toggleKeyGuide}
+              className="hidden sm:flex items-center space-x-1 bg-emerald-900 hover:bg-emerald-800 text-emerald-100 px-2 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer border border-emerald-700 active:scale-95 shadow-xs min-h-[36px]"
+              title="8-Key Navigation Guide"
             >
-              <Grid className="w-3.5 h-3.5 text-amber-300" />
+              <Keyboard className="w-3.5 h-3.5 text-amber-300 shrink-0" />
+              <span className="hidden md:inline">Guide</span>
             </button>
 
             <button
               onClick={toggleFullscreen}
-              className="flex items-center space-x-1 bg-emerald-900 hover:bg-emerald-800 text-emerald-100 px-1.5 sm:px-2 py-1 rounded text-xs font-semibold transition cursor-pointer border border-emerald-700 shadow-xs"
-              title="Full-screen Exam Kiosk Mode"
+              className="hidden sm:flex items-center space-x-1 bg-emerald-900 hover:bg-emerald-800 text-emerald-100 px-1.5 sm:px-2 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer border border-emerald-700 shadow-xs min-h-[36px]"
+              title="Full-screen Exam Mode"
             >
               {isFullscreen ? <Minimize2 className="w-3.5 h-3.5" /> : <Maximize2 className="w-3.5 h-3.5" />}
             </button>
@@ -151,7 +146,7 @@ export const CandidateHeader: React.FC = () => {
 
           {/* Digital Timer */}
           <div
-            className={`flex items-center space-x-1.5 sm:space-x-2 px-2.5 sm:px-3 py-1 rounded-md border shadow-inner transition-all ${
+            className={`flex items-center space-x-1 px-2.5 sm:px-3 py-1 rounded-lg border shadow-inner transition-all min-h-[36px] ${
               isLowTime
                 ? 'bg-rose-950 border-rose-500 text-rose-200 animate-pulse'
                 : isWarningTime
@@ -160,14 +155,11 @@ export const CandidateHeader: React.FC = () => {
             }`}
           >
             <div className="text-right">
-              <span className="hidden sm:inline-block text-[9px] uppercase font-bold text-slate-400 mr-1.5">
-                Time Left:
-              </span>
-              <span className="text-base sm:text-lg font-mono font-black tracking-wider leading-none">
+              <span className="text-sm sm:text-base font-mono font-black tracking-wider leading-none">
                 {formattedTime}
               </span>
             </div>
-            {isLowTime && <AlertCircle className="w-4 h-4 text-rose-400 animate-bounce" />}
+            {isLowTime && <AlertCircle className="w-3.5 h-3.5 text-rose-400 animate-bounce ml-0.5" />}
           </div>
         </div>
       </div>

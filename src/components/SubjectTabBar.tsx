@@ -12,8 +12,8 @@ export const SubjectTabBar: React.FC = () => {
   } = useExam();
 
   return (
-    <nav className="bg-slate-850 border-b border-slate-700/80 px-2 sm:px-4 pt-1 flex items-center overflow-x-auto scrollbar-none shrink-0 bg-slate-900">
-      <div className="flex space-x-1 sm:space-x-1.5 min-w-max pb-0.5">
+    <nav className="bg-slate-900 border-b border-slate-700/80 px-2 sm:px-4 pt-1 flex items-center overflow-x-auto scrollbar-none shrink-0 z-20">
+      <div className="flex space-x-1 sm:space-x-1.5 min-w-max pb-1">
         {selectedSubjects.map((subId, idx) => {
           const isActive = currentSubjectIndex === idx;
           const subMeta = ALL_SUBJECTS[subId];
@@ -31,13 +31,13 @@ export const SubjectTabBar: React.FC = () => {
             <button
               key={subId}
               onClick={() => switchSubject(idx)}
-              className={`group relative flex items-center space-x-1.5 px-3 sm:px-4 py-1.5 rounded-t-md font-semibold text-xs sm:text-xs transition-all cursor-pointer ${
+              className={`group relative flex items-center space-x-1.5 px-3 sm:px-4 py-2 rounded-t-lg font-bold text-xs transition-all cursor-pointer min-h-[40px] ${
                 isActive
-                  ? 'bg-slate-100 text-emerald-950 shadow-xs border-t-2 border-emerald-600'
-                  : 'bg-slate-800/80 text-slate-300 hover:bg-slate-700/80 hover:text-white border-t-2 border-transparent'
+                  ? 'bg-slate-100 text-emerald-950 shadow-xs border-t-2 border-emerald-600 font-black'
+                  : 'bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white border-t-2 border-transparent'
               }`}
             >
-              <span>{subMeta?.name || subId}</span>
+              <span>{subMeta?.shortName || subMeta?.name || subId}</span>
               <span
                 className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono font-medium ${
                   isActive

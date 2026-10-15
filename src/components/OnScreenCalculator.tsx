@@ -275,7 +275,7 @@ export const OnScreenCalculator: React.FC = () => {
       style={{
         transform: `translate(${position.x}px, ${position.y}px)`
       }}
-      className="fixed bottom-20 right-4 sm:right-8 z-50 w-72 bg-slate-900 text-white rounded-xl shadow-2xl border-2 border-emerald-600 overflow-hidden select-none transition-shadow"
+      className="fixed bottom-16 sm:bottom-20 left-1/2 -translate-x-1/2 sm:left-auto sm:right-8 sm:translate-x-0 z-50 w-[90vw] max-w-[280px] sm:w-72 bg-slate-900 text-white rounded-2xl shadow-2xl border-2 border-emerald-600 overflow-hidden select-none transition-shadow"
     >
       {/* Draggable Title bar */}
       <div

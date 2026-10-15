@@ -70,7 +70,7 @@ const ExamScreen: React.FC = () => {
 
   // Active examination in-progress view (Locked fullscreen layout)
   return (
-    <div className="flex flex-col h-screen w-screen overflow-hidden bg-slate-100 exam-select-none font-sans">
+    <div className="flex flex-col h-screen h-[100dvh] w-screen overflow-hidden bg-slate-100 exam-select-none font-sans">
       {/* 1. Official Header (Streamlined Height) */}
       <CandidateHeader />
 
