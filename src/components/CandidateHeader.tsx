@@ -90,6 +90,9 @@ export const CandidateHeader: React.FC = () => {
               <span className="hidden sm:inline text-emerald-400">
                 &bull; Mode: {mode === 'simulation' ? 'Official Simulation' : 'Study & Practice'}
               </span>
+              <span className="hidden xl:inline text-amber-300 font-medium">
+                &bull; Made with ❤️ by <strong>hxncodes</strong>
+              </span>
             </div>
           </div>
         </div>

@@ -207,9 +207,18 @@ export const ResultSlip: React.FC<ResultSlipProps> = ({ initialResult, onOpenRec
           </div>
         </div>
 
-        {/* Security watermark footer */}
-        <div className="bg-slate-50 border-t border-slate-200 p-4 text-center text-[10px] text-slate-500 font-mono">
-          JAMB CBT SIMULATOR VERIFICATION HASH: {candidate.regNumber}-{Date.now().toString(36).toUpperCase()} &bull; 100% REPLICA
+        {/* Security watermark & special tribute footer */}
+        <div className="bg-slate-50 border-t border-slate-200 px-6 py-4 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-600 gap-2 font-sans">
+          <div className="font-mono text-[10px] text-slate-400">
+            JAMB CBT SIMULATOR VERIFICATION HASH: {candidate.regNumber}-{Date.now().toString(36).toUpperCase()}
+          </div>
+          <div className="font-medium flex items-center space-x-1.5 text-xs text-slate-700">
+            <span>Specially crafted with ❤️ by</span>
+            <span className="font-black text-amber-800 bg-amber-100 px-2 py-0.5 rounded border border-amber-300 shadow-2xs">
+              hxncodes
+            </span>
+            <span>for <strong className="text-emerald-950 font-bold">{candidate.name}</strong></span>
+          </div>
         </div>
       </div>
     </div>

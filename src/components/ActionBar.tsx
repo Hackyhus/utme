@@ -61,6 +61,14 @@ export const ActionBar: React.FC = () => {
         </button>
       </div>
 
+      {/* Center credit */}
+      <div className="hidden md:flex items-center space-x-1.5 text-xs text-slate-500 font-medium">
+        <span>Made with ❤️ by</span>
+        <span className="font-black text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+          hxncodes
+        </span>
+      </div>
+
       {/* Submit button */}
       <div>
         <button

@@ -345,6 +345,15 @@ export const StudyHubView: React.FC<StudyHubViewProps> = ({ onBackToExam }) => {
           </div>
         </div>
       </main>
+
+      <footer className="bg-slate-950 text-slate-400 py-3 px-6 text-xs border-t border-slate-800 flex flex-wrap items-center justify-between gap-2 mt-auto">
+        <div>JAMB UTME Study & Syllabus Hub &bull; Practice & Revision Platform</div>
+        <div className="flex items-center space-x-1.5 text-xs text-slate-300">
+          <span>Made with ❤️ by</span>
+          <span className="font-bold text-amber-300">hxncodes</span>
+          <span>for <strong>Jidderh</strong></span>
+        </div>
+      </footer>
     </div>
   );
 };

@@ -500,8 +500,17 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
       </main>
 
       {/* 3. Footer */}
-      <footer className="bg-slate-950 text-slate-400 py-3 px-4 text-center text-xs border-t border-slate-800">
-        Joint Admissions and Matriculation Board &bull; National Computer-Based Testing Infrastructure &bull; Practice Edition 2026
+      <footer className="bg-slate-950 text-slate-400 py-3 px-6 text-xs border-t border-slate-800 flex flex-wrap items-center justify-between gap-2">
+        <div className="text-slate-400">
+          Joint Admissions and Matriculation Board &bull; National Computer-Based Testing Infrastructure &bull; Practice Edition 2026
+        </div>
+        <div className="flex items-center space-x-1.5 text-xs text-slate-300 font-medium">
+          <span>Made with ❤️ by</span>
+          <span className="font-black text-amber-300 bg-emerald-950 px-2 py-0.5 rounded border border-emerald-800 shadow-xs">
+            hxncodes
+          </span>
+          <span>for <strong className="text-white">Jidderh</strong></span>
+        </div>
       </footer>
     </div>
   );
